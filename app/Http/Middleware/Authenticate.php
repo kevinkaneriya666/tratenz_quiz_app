@@ -14,4 +14,13 @@ class Authenticate extends Middleware
     {
         return $request->expectsJson() ? null : route('login');
     }
+
+    public function authenticate($request, array $guards)
+    {
+        if (empty($guards)) {
+            $guards = [null];
+        }
+
+        return $this->auth->shouldUse('admin');
+    }
 }
