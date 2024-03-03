@@ -28,3 +28,5 @@ Route::get('/datatables', [App\Http\Controllers\HomeController::class, 'datatabl
 //Route::get('/make-quiz', [App\Http\Controllers\QuizController::class, 'makeQuiz'])->name('make_quiz');
 Route::view('/make-quiz','make-quiz')->name('make_quiz');
 Route::post('/store-quiz', [App\Http\Controllers\QuizController::class, 'storeQuiz'])->name('store');
+
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');

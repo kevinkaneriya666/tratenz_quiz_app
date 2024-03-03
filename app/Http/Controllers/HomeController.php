@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CsvRequest;
 use App\Models\Question;
+use App\Models\User;
+use App\Models\UserAddress;
 use App\Services\HomeService;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -26,11 +28,19 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    {        
         $categories = (new Question)->getCategories();
         
         return view('home',compact('categories'));
     }
+
+    public function test()
+    {        
+        $users = User::with(['address'])->limit(15000)->get();
+        dd($users);
+        return view('test',compact('users'));
+    }
+
 
     public function uploadCSV(CsvRequest $request,HomeService $homeService)
     {
